@@ -9,16 +9,20 @@ using namespace std;
 
 
 void bubbleSort(int arr[], int n){
-    for(int i = 0 ; i < n ; i++){
+    // passes 
+    for(int i = 0 ; i < n ; i ++){
+        // comparisions
         for(int j = 0 ; j < n -1 ; j++){
-            if(arr[j] > arr[j+1])
-                swap(arr[j] , arr[j+1]);
+           if( arr[j] > arr[j+1])
+            swap(arr[j] , arr[j+1]); 
         }
-        cout << " pass " << (i+1) << " = ";
+        cout << "pass " << i+1 << " = ";
+        // prinitng the result of passes
         for(int k = 0 ; k < n ; k++){
             cout << arr[k] << " ";
         }
         cout << endl;
+
 
     }
 }
@@ -36,3 +40,22 @@ int main()
 
     return 0; 
 } 
+
+
+/*
+
+
+INPUT : no inputs required
+RESULT: 
+====================
+
+ pass 1 = 5 2 10 40
+ pass 2 = 2 5 10 40
+ pass 3 = 2 5 10 40
+ pass 4 = 2 5 10 40
+
+
+====================
+
+
+*/
