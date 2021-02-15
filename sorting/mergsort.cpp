@@ -7,56 +7,54 @@ Channel link : https://www.youtube.com/channel/UCdpGuJetVhKzinbgM80B1ow
 #include <bits/stdc++.h> 
 using namespace std; 
 
-void merge(int arr[] , int start, int mid , int end){
-    int p = start , q = mid + 1;
-    int A[end -start + 1 ] , k = 0;
-    for(int i = start ; i <= end ; i++){
-        // check if first list is over
+void merge(int arr[] , int start , int mid ,int high){
+    int  p = start , q = mid + 1 ;
+    int A[high - start + 1 ] , k = 0;
+    for(int i = start ; i <= high ; i++){
         if(p > mid)
             A[k++] = arr[q++];
-        // check if second list is over
-        else if ( q > end)
+        else if(q > high)
             A[k++] = arr[p++];
-        // compare and update the list
-        else if ( arr[p] > arr[q] ){
+        //checking inuvidual blocks
+        else if(arr[p] > arr[q]){
             A[k++] = arr[q++];
         } else {
-             A[k++] = arr[p++];
+            A[k++] = arr[p++];
         }
     }
-    // update the array for the sorted value
-    for (int p = 0; p < k; p++)
-    {
-        arr[start++] = A[p];
+    //updating the result to actual array
+    cout << endl;
+    for(int j = 0 ; j < k ; j++){
+        arr[start++] = A[j];
+        cout << A[j] << " ";
     }
-
 }
 
-void mergeSort(int arr[],int start,int end){
+void mergeSort(int arr[],int low,int high){
 
-    if(start < end){
-        int mid = (start+end)/2;
-        // split the list based on mid point
-        mergeSort(arr,start,mid);
-        mergeSort(arr,mid+1,end);
-        merge(arr,start,mid,end);
+    if(low < high){
+        int mid = (low+high)/2;
+        cout << " index  = " << mid << " " << endl;
+        mergeSort(arr,low,mid);
+        mergeSort(arr,mid+1,high);
+        merge(arr,low,mid,high);
     }
-
 
 }
 
 int main() 
 {
-    cout << endl <<  "====================" << endl << endl;
+    cout <<endl<<"=============="<<endl<<endl;
 
-    int arr[] = { 9,7,8,3,2,1 };
+    int arr[] = {9,7,8,3,2,1};
     int n = sizeof(arr) / sizeof(arr[0]);
     mergeSort(arr,0,n-1);
-
-    for(int i = 0 ; i  < n ; i++){
+    cout << endl;
+    for(int i = 0 ; i < n ; i++){
         cout << arr[i] << " ";
     }
-    cout << endl << endl <<  "====================" << endl;
+
+    cout <<endl<<"=============="<<endl<<endl;
 
     return 0; 
 } 
